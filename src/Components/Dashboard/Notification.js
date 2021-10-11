@@ -1,6 +1,6 @@
 const Notification = () => {
 
-    return ( <h>Notifications</h> );
+    return ( <h1>Notifications</h1> );
 }
  
 export default Notification;

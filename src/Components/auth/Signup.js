@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {signUp} from '../../Store/actions/Signinaction'
 
 
 class SignUp extends Component {
@@ -17,7 +19,7 @@ class SignUp extends Component {
      }
      handleSubmit=(e)=>{
          e.preventDefault();
-        console.log(this.state);
+        this.props.signUp(this.state)
      
     }
 
@@ -50,5 +52,11 @@ class SignUp extends Component {
           );
     }
 }
+
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        signUp:(newUser)=>dispatch(signUp(newUser))
+    }
+}
  
-export default SignUp;
+export default connect(null,mapDispatchToProps)(SignUp);

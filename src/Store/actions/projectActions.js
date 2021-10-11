@@ -4,11 +4,12 @@
 export const createProject=(project)=>{
     return (dispatch,getState,{getFirestore})=>{
         const firestore= getFirestore();
+        const profile=getState().firebase.profile;
 
         firestore.collection('Projects').add({
             ...project,
-            FirstName:"Ron",
-            LastName:'Rohtas',
+            FirstName:profile.firstName,
+            LastName:profile.lastName,
 
 
 

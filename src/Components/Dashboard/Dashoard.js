@@ -10,7 +10,7 @@ class Dashboard  extends Component {
     
     render() { 
         const {projects,auth}=this.props;
-        console.log(this.props.projects)
+        
         if(!auth.uid) return <Redirect to='/signin'/>
         return (
             <div className="dashboard container">
@@ -26,7 +26,7 @@ class Dashboard  extends Component {
 }
 
 const mapStateToProps= (state) =>{
-    console.log(state);
+    
     return{
         projects: state.firestore.ordered.Projects,
         auth:state.firebase.auth

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {signUp} from '../../Store/actions/Signinaction'
+import {firestoreConnect} from 'react-redux-firebase'
+import {Redirect} from "react-router-dom"
+import {compose} from 'redux';
 
 
 class SignUp extends Component {
@@ -20,11 +23,18 @@ class SignUp extends Component {
      handleSubmit=(e)=>{
          e.preventDefault();
         this.props.signUp(this.state)
+       
      
     }
 
     render() { 
+        const {projects,auth}=this.props;
+        
+        if(auth.uid) return <Redirect to='/'/>
+        
         return (
+            
+            
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">Sign up</h5>
@@ -52,6 +62,14 @@ class SignUp extends Component {
           );
     }
 }
+const mapStateToProps= (state) =>{
+    
+    return{
+       
+        auth:state.firebase.auth
+    }
+    
+}
 
 const mapDispatchToProps=(dispatch)=>{
     return{
@@ -59,4 +77,6 @@ const mapDispatchToProps=(dispatch)=>{
     }
 }
  
-export default connect(null,mapDispatchToProps)(SignUp);
+export default compose(connect(mapStateToProps,mapDispatchToProps),firestoreConnect([
+    {collection:'Projects'}
+]))(SignUp);

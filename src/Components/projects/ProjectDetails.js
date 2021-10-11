@@ -4,7 +4,7 @@ import {compose} from 'redux';
 
 const ProjectDetails = (props) => {
     const id=props.match.params.id;
-    console.log(props)
+    
 
     const {project}=props;
    
@@ -26,7 +26,7 @@ const ProjectDetails = (props) => {
     }
     const mapStateToProps= (state,ownprops) =>{
         const id=ownprops.match.params.id;
-        console.log(state);
+        
       const  projects= state.firestore.data.Projects;
       const project=projects ? projects[id] : null
         return{

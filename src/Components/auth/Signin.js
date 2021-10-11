@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {signIn} from '../../Store/actions/Signinaction'
 import { connect } from 'react-redux';
+import {firestoreConnect} from 'react-redux-firebase'
+import {Redirect} from "react-router-dom"
+import {compose} from 'redux';
 
 class SignIn extends Component {
     state = { 
@@ -16,13 +19,16 @@ class SignIn extends Component {
      }
      handleSubmit=(e)=>{
          e.preventDefault();
-        console.log(this.state);
+       
         this.props.SignIn(this.state);
      
     }
 
     render() { 
         const {authError}=this.props;
+        const {projects,auth}=this.props;
+        
+        if(auth.uid) return <Redirect to='/'/>
         return (
 
             <div className="container">
@@ -47,6 +53,14 @@ class SignIn extends Component {
           );
     }
 }
+const mapStateToProps= (state) =>{
+   
+    return{
+       
+        auth:state.firebase.auth
+    }
+    
+}
 
 const mapDispatchToProps=(dispatch)=>{
     return{
@@ -54,4 +68,6 @@ const mapDispatchToProps=(dispatch)=>{
     }
 }
  
-export default connect(null,mapDispatchToProps)(SignIn);
+export default compose(connect(mapStateToProps,mapDispatchToProps),firestoreConnect([
+    {collection:'Projects'}
+]))(SignIn);

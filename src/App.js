@@ -11,6 +11,7 @@ import ProjectDetails from './Components/projects/ProjectDetails';
 
 
 function App() {
+ 
   return (
     <BrowserRouter>
     

@@ -13,12 +13,10 @@ class Dashboard  extends Component {
         
         if(!auth.uid) return <Redirect to='/signin'/>
         return (
-            <div className="dashboard container">
-                <div className="row">
-                    <div className="col s12 m6"><ProjectLists projects={projects}/></div>
-                    <div className="col s12 m5 offset-m1">
-                        <Notification/>
-                    </div>
+            <div className="dashboard container m12">
+                <div style={{display:"flex"}} className="row m12">
+                    <div style={{display:"flex"}} className="col s12 m12"><ProjectLists projects={projects}/></div>
+                    
                 </div>
             </div>
           )

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux';
-
+import './Project.css'
 const ProjectDetails = (props) => {
     const id=props.match.params.id;
     
@@ -12,10 +12,14 @@ const ProjectDetails = (props) => {
         <div className="conatiner section project-details">
             <div className="card z-depth-0">
                 <div className="card-content">
-                <span className="card-title">{project.title}-{id}</span>
-                <p>{project.content}</p>
+                <span className="card-title" style={{fontSize:'2rem'}}>Topic:{project.title}</span>
+                
 
                 </div>
+                <div className="description" style={{
+                    color:'Black',
+                    backgroundColor:'white'
+                }}><p>{project.content}</p></div>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>posted by {project.FirstName}</div>
                     <div>2nd</div>

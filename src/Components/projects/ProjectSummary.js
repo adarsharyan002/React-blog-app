@@ -1,10 +1,15 @@
+
+import './Project.css';
+
 const ProjectSummary = ({project}) => {
+
+    console.log(project);
     return (
          
-        <div className="card z-depth-0 project-summary">
+        <div style={{width:'300px'}} className="card z-depth-0 project-summary">
         <div className="card-content grey-text text-darken-3">
-            <span className="card-title">{project.title}</span>
-            <p> Posted by {project.FirstName}</p>
+            <span style={{fontSize:'2rem',fontWeight:'250',color:'#EC407A'}} className="card-title">{project.title}</span>
+            <p  style={{fontSize:'1.3rem'}}> Posted by {project.FirstName}</p>
             <p className="grey-text">3rd september 2am</p>
 
         </div>
